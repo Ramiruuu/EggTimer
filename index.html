@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Egg Timer Cooker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/styles.css">
+</head>
+<body>
+    <div class="timer-container">
+        <h1>Egg Timer Cooker</h1>
+        <div class="select-group">
+            <label for="egg-type">Select Doneness:</label>
+            <select id="egg-type">
+                <option value="240">Soft Boiled (4 min)</option>
+                <option value="360">Medium Boiled (6 min)</option>
+                <option value="600">Hard Boiled (10 min)</option>
+            </select>
+        </div>
+        <div class="timer-display">
+            <div class="timer-ring">
+                <svg>
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color: #ff6b6b; stop-opacity: 0.9"/>
+                            <stop offset="100%" style="stop-color: #4ecdc4; stop-opacity: 0.9"/>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="70" cy="70" r="60"/>
+                    <circle class="progress" cx="70" cy="70" r="60"/>
+                </svg>
+            </div>
+            <div class="time">04:00</div>
+        </div>
+        <button id="start-reset">Start</button>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Egg image change logic
+        const eggType = document.getElementById('egg-type');
+        const eggImage = document.getElementById('egg-image');
+        eggType.addEventListener('change', function() {
+            const selected = eggType.options[eggType.selectedIndex];
+            eggImage.src = selected.getAttribute('data-img');
+        });
+    </script>
+</body>
+</html>
